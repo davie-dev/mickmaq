@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
@@ -73,9 +73,12 @@ public class AppTest
 	            //System.out.println("Essai d'entrer le mot de passe...");
 	            driver.findElement(By.xpath("//android.widget.EditText[@text=\"Please enter password\"]")).sendKeys("Mickmaq106#");
 	            driver.findElement(By.xpath( "//android.widget.TextView[@text=\"Continue\"]")).click();
-	            driver.findElement(By.xpath("//android.widget.TextView[@text=\"See more\"]")).click();
-	    		driver.pressKey(new KeyEvent(AndroidKey.BACK));
-	    		driver.pressKey(new KeyEvent(AndroidKey.HOME));
+	            driver.findElement(By.xpath("//android.widget.TextView[@text=\"TJ\"]")).click(); // Cliquer sur un élément visible après la connexion
+
+            // Se déconnecter
+            driver.findElement(By.xpath("//android.widget.TextView[@text=\"Logout\"]")).click();
+            driver.findElement(AppiumBy.id("android:id/button1")).click(); // Confirmer la déconnexion
+
 	        }catch (Exception e) {
 		System.out.println("fin!!");
 			}
